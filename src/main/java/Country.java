@@ -19,10 +19,6 @@ public enum Country {
         return isOpen;
     }
 
-    public String getRuName() {
-        return ruName;
-    }
-
     @Override
     public String toString() {
         return super.toString() + "('" + ruName + "')";
@@ -31,9 +27,9 @@ public enum Country {
 
     public static Country getByRuName(final String ruCountry) throws NoSuchCountryException {
         Country[] countryArray = Country.values();
-        for (int i = 0; i < countryArray.length; i++) {
-            if (countryArray[i].ruName.equals(ruCountry)) {
-                return countryArray[i];
+        for (Country country : countryArray) {
+            if (country.ruName.equals(ruCountry)) {
+                return country;
             }
         }
         throw new NoSuchCountryException("Страны '" + ruCountry + "' не существует.");
